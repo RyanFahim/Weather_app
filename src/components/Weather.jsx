@@ -32,7 +32,7 @@ const Weather = () => {
     useEffect(() => {
         const fetchWeather = async () => {
 
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=a789924b62be48ae804d80176a683c3e`
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid={Your key}
             const response = await fetch(url);
             
             if (componentMounted){

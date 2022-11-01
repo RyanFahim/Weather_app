@@ -21,18 +21,17 @@ const Weather = () => {
     const [search, setSearch] = useState("Dhaka")
     const [data, setData] = useState(1)
     const [input, setInput] = useState()
-    const [city, setCity] = useState([])
+    
 
     // console.log(search)
 
     let componentMounted = true;
-    let value = 1
-    let img = [ img1, img2, img3, img4  ]
-
+   
+    //useEffect hook for api call
     useEffect(() => {
         const fetchWeather = async () => {
 
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid={Your key}
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid={Your Key}`
             const response = await fetch(url);
             
             if (componentMounted){
@@ -48,28 +47,12 @@ const Weather = () => {
         
     },[search])
 
-//    { city?console.log(JSON.stringify(city)) : null}
-    // console.log('city is ' + JSON.stringify(city.main.temp));
 
-    // var temp1 =1
-    // console.log( data);
-    // const temp = (data.main.temp - 273.15).toFixed(2);
-    // console.log(temp)
-    // console.log(city.name)
     console.log(JSON.stringify(data, null, 2));
 
 
-    function abc(){
-        // let random_number =Math.floor(Math.random()*img.lenght);
 
-        
-
-        const random_index = Math.floor(Math.random()*img.length)
-        const selected_image = img[random_index]
-        return img[selected_image]
-    }
-
-
+    //Dynamic emoji
     let emoji = null;
     if(typeof data.main != 'undefined'){
         if(data.weather[0].main == 'Clouds'){
@@ -127,6 +110,8 @@ const Weather = () => {
                 <div className="row justify-content-center">
                     <div className="col-md-4">
                         <div className="card bg-dark text-white texxt-center border-5">
+
+                            {/* Random picture genearation */}
                             <img className="card-img" src= 'https://source.unsplash.com/random/600x900/?weather,aesthetic' alt="Card image" />
 
                             <div className="card-img-overlay">
